@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'myapp/globals.css' %}" />
+    <link rel="stylesheet" href="{% static 'myapp/contact.css' %}" />
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+
+    </style>
+</head>
+<body>
+
+        <form id="contact-form" method="post">
+            {% csrf_token %}
+            <div class="container">
+            <input type="text" class="content" name="email" id="email" placeholder="Fill your Email..." />
+
+            <div class="grid-container">
+                <div class="grid-item"><img src="{% static 'myapp/img/7.png' %}" /></div>
+                <div class="grid-item"><img src="{% static 'myapp/img/8.png' %}" /></div>
+                <div class="grid-item"><img src="{% static 'myapp/img/9.png' %}" /></div>
+                <div class="grid-item"><img src="{% static 'myapp/img/10.png' %}" /></div>
+                <div class="grid-item">
+                    <img src="{% static 'myapp/img/11.png' %}" />
+                </div>
+                <div class="grid-item">
+                    <button type="submit" id="complete">
+                        <img src="{% static 'myapp/img/contact-hover.png' %}" alt="저장" />
+                    </button>
+                    <p>contact</p>
+                </div>
+            </div>
+
+            <input type="text" class="content" name="name" id="title" placeholder="Fill the Title..." />
+            <input type="text" class="content" name="message" id="box" placeholder="Fill the Message..." />
+        </div>
+        </form> <!-- <form> 태그를 여기서 닫음 -->
+
+
+    <script src="{% static 'myapp/click.js' %}">
+
+
+
+    </script> <!-- static 파일 경로 사용 -->
+        <script>
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // 기본 제출 방지
+
+        const formData = new FormData(this);
+
+        fetch("{% url 'contact' %}", { // 'contact'는 URL 패턴 이름에 맞게 수정
+            method: "POST",
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("제출이 완료되었습니다!"); // 성공 알림
+                this.reset(); // 폼 초기화
+            } else {
+                let errors = '';
+                for (const [key, value] of Object.entries(data.errors)) {
+                    errors += `${key}: ${value.join(', ')}\n`; // 에러 메시지 모음
+                }
+                alert(`제출에 실패했습니다:\n${errors}`); // 실패 알림
+            }
+        })
+        .catch(error => {
+            console.error("오류 발생:", error);
+            alert("서버 오류가 발생했습니다. 나중에 다시 시도해 주세요.");
+        });
+    });
+</script>
+</body>
+</html>

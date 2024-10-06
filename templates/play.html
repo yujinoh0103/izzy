@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+
+  {% load static %}
+
+    <link rel="stylesheet" href="{% static 'myapp/globals.css' %}" />
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .grid-container {
+            grid-template-rows: repeat(3, 1fr);
+            row-gap: 6vw;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color); /* 초기 배경색 */
+            animation: backgroundFade 140s ease-in-out forwards; /* 애니메이션 적용 */
+            overflow: hidden;
+        }
+
+        @keyframes backgroundFade {
+            0% {
+                background-color: var(--background-color); /* 시작 색상 */
+            }
+            100% {
+                background-color: white; /* 최종 색상 */
+            }
+        }
+
+        .grid-item p {
+            transform: translateY(0%);
+            text-align: left;
+            top: 0;
+            font-size: 1vw;
+            line-height: 150%; /* 140% */
+            margin-left: -1.6vw;
+            margin-right: -2vw;
+            animation: scrollText 24s linear infinite;
+            position: absolute;
+        }
+
+        @keyframes scrollText {
+            0% {
+                top: -100vh; /* 화면 아래에서 시작 */
+            }
+            100% {
+                top: 100vh; /* 화면 위로 올라감 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+
+        <!-- 이미지 클릭 시 오디오 재생/정지 -->
+        <div class="grid-item">
+            <img src="{% static 'myapp/img/play-hover.png' %}" id="audio-control" style="cursor: pointer;" />
+        </div>
+
+        <div class="grid-item">
+            <p>Freelance Services<br/><br/>
+            A range of freelance services is available, including songwriting (toplining), album planning, vocal directing, and providing feedback and consulting on artist image, tracks, albums, and offline events. All freelance work is subject to availability and alignment with the schedule and direction of the project.<br/><br/>
+            Please provide your name, affiliation, and a contactable email address, and detail your requested freelance services and collaboration needs.
+            </p>
+        </div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+    </div>
+
+    <!-- 오디오 태그 (숨김) -->
+    <audio id="myAudio" autoplay>
+        <source src="{% static 'myapp/01.mp3' %}" type="audio/mpeg">
+    </audio>
+
+<script src="{% static 'myapp/click.js' %}"></script>
+<script>
+
+
+    // 오디오와 이미지 클릭 제어
+    const audio = document.getElementById('myAudio');
+    const img = document.getElementById('audio-control');
+
+    img.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play(); // 오디오 재생
+        } else {
+            audio.pause(); // 오디오 일시정지
+        }
+    });
+
+    // 오디오가 끝나면 루트로 이동
+    audio.addEventListener('ended', function() {
+        window.location.href = '/'; // 루트로 이동
+    });
+</script>
+
+</body>
+</html>

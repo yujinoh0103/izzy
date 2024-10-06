@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+  {% load static %}
+
+    <link rel="stylesheet" href="{% static 'myapp/globals.css' %}" />
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="grid-container">
+        <div class="grid-item"><img src="{% static 'myapp/img/7.png' %}" /><p>Apple<br/>Music</p></div>
+        <div class="grid-item"><img src="{% static 'myapp/img/8.png' %}" /><p>Spotify</p></div>
+        <div class="grid-item"><img src="{% static 'myapp/img/9.png' %}" /><p>Melon</p></div>
+        <div class="grid-item"><img src="{% static 'myapp/img/10.png' %}" /><p>Bugs</p></div>
+        <div class="grid-item">
+            <img src="{% static 'myapp/img/work-hover.png' %}" id="work"/>
+            <p>Work</p>
+        </div>
+        <div class="grid-item">
+            <img src="{% static 'myapp/img/12.png' %}"/>
+            <p>YouTube</p>
+        </div>
+    </div>
+
+    <script src="{% static 'myapp/click.js' %}"></script> <!-- static 파일 경로 사용 -->
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'myapp/hover.css' %}"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    .grid-container
+    {grid-template-rows: repeat(3, 1fr);row-gap:6vw;
+    }
+    .grid-item p{
+      display: none; /* 기본적으로 p 태그는 숨겨짐 */
+    }
+    .grid-item p.visible {
+  display: block;
+  position: absolute;
+}
+
+  </style>
+
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-item"><img src="{% static 'myapp/img/1.png' %}" /></div>
+      <div class="grid-item"><img src="{% static 'myapp/img/2.png' %}" /></div>
+      <div class="grid-item">
+        <a href="{% url 'play' %}" class="custom-cursor-link"><img src="{% static 'myapp/img/3.png' %}" class="hover-target" id="play"/></a>
+        <p id="play">Play</p>
+        <object data="{% static 'myapp/img/BBB.svg' %}" type="image/svg+xml" class="red" id="play"></object>
+      </div>
+      <div class="grid-item"><img src="{% static 'myapp/img/4.png' %}" /></div>
+      <div class="grid-item"><img src="{% static 'myapp/img/5.png' %}" /></div>
+      <div class="grid-item"><img src="{% static 'myapp/img/6.png' %}" /></div>
+
+      <div class="grid-item"><img src="{% static 'myapp/img/7.png' %}" /></div>
+      <div class="grid-item"><img src="{% static 'myapp/img/8.png' %}" /></div>
+      <div class="grid-item"><img src="{% static 'myapp/img/9.png' %}" /></div>
+      <div class="grid-item"><img src="{% static 'myapp/img/10.png' %}" /></div>
+
+      <div class="grid-item">
+        <a href="{% url 'work' %} class="custom-cursor-link"" class="custom-cursor-link"><img src="{% static 'myapp/img/11.png' %}" class="hover-target" id="work"/></a>
+        <p id="work">Work</p>
+        <object data="{% static 'myapp/img/BBB.svg' %}" type="image/svg+xml" class="red" id="work"></object>
+      </div>
+
+      <div class="grid-item">
+        <a href="{% url 'contact' %}" class="custom-cursor-link"><img src="{% static 'myapp/img/12.png' %}" class="hover-target" id="contact"/></a>
+        <p id="contact">Contact</p>
+        <object data="{% static 'myapp/img/BBB.svg' %}" type="image/svg+xml" class="red" id="contact"></object>
+      </div>
+
+      <div class="grid-item">
+        <a href="{% url 'bio' %}" class="custom-cursor-link"><img src="{% static 'myapp/img/13.png' %}" class="hover-target" id="bio"/></a>
+        <p id="bio">Bio</p>
+        <object data="{% static 'myapp/img/BBB.svg' %}" type="image/svg+xml" class="red" id="bio"></object>
+      </div>
+
+      <div class="grid-item"><img src="{% static 'myapp/img/14.png' %}" /></div>
+      <div class="grid-item"><img src="{% static 'myapp/img/15.png' %}" /></div>
+      <div class="grid-item"><img src="{% static 'myapp/img/16.png' %}" /></div>
+      <div class="grid-item"><img src="{% static 'myapp/img/17.png' %}" /></div>
+      <div class="grid-item"><img src="{% static 'myapp/img/18.png' %}" /></div>
+    </div>
+
+    <script src="{% static 'myapp/hoverEvent.js' %}"></script>
+<script>
+  document.querySelectorAll('.custom-cursor-link').forEach(link => {
+  link.addEventListener('click', function(event) {
+    event.preventDefault(); // 기본 동작인 링크 이동 방지
+
+    // 대기 시간 후 링크로 이동
+    const url = this.href; // 클릭된 링크의 URL
+    setTimeout(() => {
+      window.location.href = url; // 대기 후 URL로 이동
+    }, 2000); // 2000 밀리초 (2초) 대기
+  });
+});
+</script>
+  </body>
+</html>

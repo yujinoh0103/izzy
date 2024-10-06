@@ -1,0 +1,23 @@
+.red {
+    width: 20%;
+    display: none;
+    position: absolute;
+  }
+  
+  .red.visible {
+    display: inline;
+    z-index: 1;
+    animation: blink 0.3s step-start 2;
+    top:0;
+    left: 0; 
+  }
+  
+  
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1; /* 깜빡일 때 완전히 보이도록 */
+    }
+    50% {
+      opacity: 0; /* 깜빡일 때 완전히 보이지 않도록 */
+    }
+  }

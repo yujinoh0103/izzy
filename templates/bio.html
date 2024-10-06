@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+  {% load static %}
+
+    <link rel="stylesheet" href="{% static 'myapp/globals.css' %}" />
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .grid-container {
+            grid-template-rows: repeat(3, 1fr);
+            row-gap: 6vw;
+        }
+
+        .ex {
+            grid-row: span 2;
+            grid-column: span 2;
+        }
+
+        .grid-item p {
+            transform: translateY(0%);
+            text-align: left;
+            top: 0;
+            font-size: 1vw;
+            line-height: 140%; /* 140% */
+        }
+
+        .grid-item.ex {
+            margin-top: -10%; /* gap의 크기만큼 음수로 설정 */
+            margin-right: -3.6vw;
+        }
+    </style>
+    {% load static %}  <!-- static 태그 로드 -->
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="grid-item">
+            <img src="{% static 'myapp/img/bio-hover.png' %}" class="hover-target" id="bio"/>
+        </div>
+
+        <div class="grid-item"><img src="{% static 'myapp/img/14.png' %}" /></div>
+        <div class="grid-item"><img src="{% static 'myapp/img/15.png' %}" /></div>
+        <div class="grid-item"><img src="{% static 'myapp/img/16.png' %}" /></div>
+        <div class="grid-item"><img src="{% static 'myapp/img/17.png' %}" /></div>
+        <div class="grid-item"><img src="{% static 'myapp/img/18.png' %}" /></div>
+
+        <div class="grid-item ex">
+            <p>
+                Izzy Rylet | Artist & Director + Creative Visionary
+                <br/><br/>
+                "Izzy Rylet"<br/>
+                is an artist who evolves fluidly with the message.<br/>
+                Drawing from a broad musical spectrum, <br/>
+                they explore various sounds and styles, <br/>
+                creating emotionally resonant experiences<br/>
+                in personal and artistic realms.<br/>
+                Beyond music, Izzy extends their artistic <br/>
+                expression to film, visual media,<br/>
+                and immersive exhibitions.
+                <br/><br/>
+                As a Director, they meticulously oversee the creative direction of each project,<br/>
+                ensuring that all work progresses consistently and effectively communicates the intended message.<br/>
+                <br/>
+                Based in Seoul and operating independently.
+            </p>
+        </div>
+    </div>
+
+    <script src="{% static 'myapp/click.js' %}"></script> <!-- static 파일 경로 사용 -->
+</body>
+</html>

@@ -1,0 +1,69 @@
+/* 기본 스타일 */
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  row-gap: 1.6vw;
+  width: 100%;
+  max-width: 82vw;
+  height: auto;
+}
+
+/* 일반 스타일 */
+.content {
+  background-color: black;
+  color: #ffffff;
+  font-family: "Libre Baskerville";
+  font-size: 1.26vw;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  position: relative;
+  display: block;
+  text-align: left;
+  border-radius: 1.6vw;
+  border: 0.15vw dashed #FFF;
+  width: 82%;
+  padding-left: 3%;
+  padding-right: 3%;
+  height: 4vw; /* 화면 비율이 1:1일 때까지 vw 사용 */
+  margin: 0;
+}
+
+#box {
+  height: 15.5vw; /* 화면 비율이 1:1일 때까지 vw 사용 */
+}
+
+.grid-item {
+    position: relative;
+    width: 100%; /* 부모 요소의 너비를 100%로 설정 */
+    height: 100%; /* 부모 요소의 높이를 100%로 설정 */
+}
+
+button {
+    border: none; /* 경계선 제거 */
+    outline: none; /* 포커스 시 나타나는 외곽선 제거 */
+    background-color: transparent; /* 배경을 투명하게 설정 */
+    width: 100%; /* 버튼을 부모 요소의 너비에 맞춤 */
+    display: flex; /* 버튼 내에서 이미지를 중앙 정렬하기 위해 flex 사용 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    padding: 0; /* 여백 제거 */
+}
+
+button img {
+    width: 100%; /* 이미지의 너비를 버튼에 맞춤 */
+    object-fit: contain; /* 이미지가 버튼 내에서 비율에 맞게 조정 */
+}
+
+
+/* 미디어 쿼리 */
+@media (max-aspect-ratio: 16/9) {
+  .content {
+    height: 6vh; /* 1:1 비율 이상일 때의 고정 높이 */
+  }
+  .container{
+  row-gap:3vh;}
+  #box {
+    height: 28vh; /* 1:1 비율 이상일 때의 고정 높이 */
+  }
+}
